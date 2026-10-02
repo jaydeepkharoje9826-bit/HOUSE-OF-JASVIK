@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of JASVIK | Haute Parfumerie</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #070a0f;
+            color: #e2e8f0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand-logo {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Header / Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: rgba(11, 15, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-logo {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #d4af37;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 28px;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        .cart-btn {
+            background: transparent;
+            color: #d4af37;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            border: 1px solid #d4af37;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: #d4af37;
+            color: #070a0f;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle, rgba(20, 27, 38, 1) 0%, rgba(7, 10, 15, 1) 100%);
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .hero-badge {
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #d4af37;
+            margin-bottom: 35px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%);
+            color: #070a0f;
+            padding: 14px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Collection Section */
+        .container {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            color: #64748b;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: #0f1520;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            padding: 24px;
+            text-align: left;
+            transition: all 0.4s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .badge-discount {
+            position: absolute;
+            top: 34px;
+            right: 34px;
+            background: #d4af37;
+            color: #070a0f;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            letter-spacing: 1px;
+            border-radius: 2px;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            filter: brightness(0.95);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover .product-img {
+            filter: brightness(1.05);
+        }
+
+        .product-rating {
+            color: #d4af37;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #fff;
+            letter-spacing: 1px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .product-notes {
+            font-size: 12px;
+            color: #d4af37;
+            margin-bottom: 10px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .product-desc {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .view-details-btn {
+            background: transparent;
+            color: #d4af37;
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-align: left;
+            text-decoration: underline;
+        }
+
+        .product-price {
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: #64748b;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .add-cart-btn, .buy-now-btn {
+            flex: 1;
+            padding: 12px 0;
+            border-radius: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .add-cart-btn {
+            background: rgba(255, 255, 255, 0.05);
+            color: #d4af37;
+            border: 1px solid #d4af37;
+        }
+
+        .add-cart-btn:hover {
+            background: #d4af37;
+            color: #070a0f;
+        }
+
+        .buy-now-btn {
+            background: #d4af37;
+            color: #070a0f;
+        }
+
+        .buy-now-btn:hover {
+            background: #f3e5ab;
+        }
+
+        /* About Section */
+        .about-section {
+            background: #0b0f17;
+            padding: 80px 8%;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #94a3b8;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* Dedicated Contact Section */
+        .contact-section {
+            padding: 80px 8%;
+            background: #070a0f;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-box {
+            background: #0f1520;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 30px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .contact-box:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+        }
+
+        .contact-box h3 {
+            color: #d4af37;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .contact-box p, .contact-box a {
+            color: #cbd5e1;
+            font-size: 15px;
+            text-decoration: none;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .contact-box a:hover {
+            color: #d4af37;
+        }
+
+        /* Modals Common */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: #0f1520;
+            padding: 35px;
+            border-radius: 6px;
+            width: 90%;
+            max-width: 550px;
+            border: 1px solid #d4af37;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #fff;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .modal h3 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 12px;
+            color: #cbd5e1;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #070a0f;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        /* Product Detail Modal Specifics */
+        .detail-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .detail-price {
+            font-size: 22px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+        }
+
+        .notes-list, .ingredients-list {
+            text-align: left;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid #d4af37;
+        }
+
+        .notes-list h4, .ingredients-list h4 {
+            color: #d4af37;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .notes-list p, .ingredients-list p, .ingredients-list ul {
+            font-size: 13px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .ingredients-list ul {
+            padding-left: 18px;
+        }
+
+        .ingredients-list li {
+            margin-bottom: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #040609;
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #64748b;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="brand-logo">House of JASVIK</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#collection">Collection</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="cart-btn" onclick="openCheckout('Cart Checkout')">🛒 CART (<span id="cart-count">0</span>)</button>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero" id="home">
+        <div class="hero-badge">Luxury Parfumerie Exclusives</div>
+        <h1>House of JASVIK</h1>
+        <p>"अहसास शांति का, पहचान आपकी खुशबू की।"</p>
+        <a href="#collection" class="btn-primary">Discover Collection</a>
+    </section>
+
+    <!-- Products Collection -->
+    <section class="container" id="collection">
+        <h2 class="section-title">Private Reserve Collection</h2>
+        <p class="section-subtitle">Crafted for Distinction & Long-Lasting Elegance</p>
+        
+        <div class="product-grid">
+            
+            <!-- Product 1 -->
+            <div class="product-card">
+                <span class="badge-discount">BESTSELLER</span>
+                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=600" class="product-img" alt="JASVIK Noir Impérial" onclick="showProductDetails('noir')">
+                <div>
+                    <div class="product-rating">★★★★★ (4.9/5)</div>
+                    <div class="product-title">Noir Impérial</div>
+                    <div class="product-notes">Notes: Bergamot • Black Pepper • Rich Amber</div>
+                    <div class="product-desc">An intense, commanding fragrance designed for evening galas and executive impressions.</div>
+                    <button class="view-details-btn" onclick="showProductDetails('noir')">🔍 View Full Details & Ingredients</button>
+                    <div class="product-price">₹1,999 <span class="original-price">₹2,999</span></div>
+                </div>
+                <div class="btn-group">
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                    <button class="buy-now-btn" onclick="openCheckout('JASVIK Noir Impérial (₹1,999)')">Order Now</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <span class="badge-discount">LIMITED EDITION</span>
+                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=600" class="product-img" alt="JASVIK Royal Oud Intense" onclick="showProductDetails('oud')">
+                <div>
+                    <div class="product-rating">★★★★★ (5.0/5)</div>
+                    <div class="product-title">Royal Oud Intense</div>
+                    <div class="product-notes">Notes: Aged Agarwood • Saffron • Sandalwood</div>
+                    <div class="product-desc">Extremely opulent and rich royal oud extract crafted for lovers of deep oriental scents.</div>
+                    <button class="view-details-btn" onclick="showProductDetails('oud')">🔍 View Full Details & Ingredients</button>
+                    <div class="product-price">₹2,499 <span class="original-price">₹3,499</span></div>
+                </div>
+                <div class="btn-group">
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                    <button class="buy-now-btn" onclick="openCheckout('JASVIK Royal Oud Intense (₹2,499)')">Order Now</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?q=80&w=600" class="product-img" alt="JASVIK Ocean Breeze Elixir" onclick="showProductDetails('ocean')">
+                <div>
+                    <div class="product-rating">★★★★☆ (4.8/5)</div>
+                    <div class="product-title">Ocean Breeze Elixir</div>
+                    <div class="product-notes">Notes: Sea Salt • Italian Lemon • Driftwood</div>
+                    <div class="product-desc">Crisp, refreshing aquatic freshness paired with citrus notes for all-day vibrant energy.</div>
+                    <button class="view-details-btn" onclick="showProductDetails('ocean')">🔍 View Full Details & Ingredients</button>
+                    <div class="product-price">₹1,499 <span class="original-price">₹2,199</span></div>
+                </div>
+                <div class="btn-group">
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                    <button class="buy-now-btn" onclick="openCheckout('JASVIK Ocean Breeze Elixir (₹1,499)')">Order Now</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <span class="badge-discount">NEW ARRIVAL</span>
+                <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?q=80&w=600" class="product-img" alt="JASVIK Velvet Cuir" onclick="showProductDetails('velvet')">
+                <div>
+                    <div class="product-rating">★★★★★ (4.9/5)</div>
+                    <div class="product-title">Velvet Cuir</div>
+                    <div class="product-notes">Notes: Tuscan Leather • Cardamom • Sweet Tobacco</div>
+                    <div class="product-desc">A sophisticated leather and spice fragrance that exudes warmth, confidence, and style.</div>
+                    <button class="view-details-btn" onclick="showProductDetails('velvet')">🔍 View Full Details & Ingredients</button>
+                    <div class="product-price">₹1,799 <span class="original-price">₹2,599</span></div>
+                </div>
+                <div class="btn-group">
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                    <button class="buy-now-btn" onclick="openCheckout('JASVIK Velvet Cuir (₹1,799)')">Order Now</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?q=80&w=600" class="product-img" alt="JASVIK Mystic Amber" onclick="showProductDetails('amber')">
+                <div>
+                    <div class="product-rating">★★★★☆ (4.7/5)</div>
+                    <div class="product-title">Mystic Amber</div>
+                    <div class="product-notes">Notes: Golden Amber • Bourbon Vanilla • Cedarwood</div>
+                    <div class="product-desc">Sensual and mysterious blend of sweet amber and smoked vanilla for unforgettable nights.</div>
+                    <button class="view-details-btn" onclick="showProductDetails('amber')">🔍 View Full Details & Ingredients</button>
+                    <div class="product-price">₹1,699 <span class="original-price">₹2,399</span></div>
+                </div>
+                <div class="btn-group">
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                    <button class="buy-now-btn" onclick="openCheckout('JASVIK Mystic Amber (₹1,699)')">Order Now</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <span class="badge-discount">TRENDING</span>
+                <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=600" class="product-img" alt="JASVIK Citrus Supreme" onclick="showProductDetails('citrus')">
+                <div>
+                    <div class="product-rating">★★★★★ (4.9/5)</div>
+                    <div class="product-title">Citrus Supreme</div>
+                    <div class="product-notes">Notes: Grapefruit • Vetiver • Sparkling Grape</div>
+                    <div class="product-desc">An invigorating burst of fresh citrus backed by earthy vetiver notes for summer days.</div>
+                    <button class="view-details-btn" onclick="showProductDetails('citrus')">🔍 View Full Details & Ingredients</button>
+                    <div class="product-price">₹1,399 <span class="original-price">₹1,999</span></div>
+                </div>
+                <div class="btn-group">
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                    <button class="buy-now-btn" onclick="openCheckout('JASVIK Citrus Supreme (₹1,399)')">Order Now</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <h2 class="section-title">About House of JASVIK</h2>
+        <p class="section-subtitle">Excellence in Craftsmanship</p>
+        <div class="about-content">
+            House of JASVIK produces artisanal luxury fragrances crafted with fine ingredients. Our scents are carefully blended to deliver high projection, premium elegance, and long-lasting performance for every moment.
+        </div>
+    </section>
+
+    <!-- Dedicated Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">We would love to hear from you</p>
+        
+        <div class="contact-grid">
+            <div class="contact-box">
+                <h3>Founder & Sales</h3>
+                <p><strong>Jay</strong></p>
+                <p style="color: #94a3b8;">House of JASVIK</p>
+            </div>
+            
+            <div class="contact-box">
+                <h3>WhatsApp Support</h3>
+                <p>Chat directly with us</p>
+                <a href="https://wa.me/917000808242" target="_blank" style="color:#d4af37; font-weight: bold;">+91 7000808242</a>
+            </div>
+
+            <div class="contact-box">
+                <h3>Email Us</h3>
+                <p>For inquiries and support</p>
+                <a href="mailto:contact@houseofjasvik.com" style="color:#d4af37;">contact@houseofjasvik.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Modal -->
+    <div class="modal" id="detailsModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeDetails()">&times;</span>
+            <h3 id="modalTitle">Perfume Title</h3>
+            <img src="" id="modalImg" class="detail-img" alt="Perfume Preview">
+            <div class="detail-price" id="modalPrice">₹0</div>
+
+            <div class="notes-list">
+                <h4>Fragrance Pyramid (Notes)</h4>
+                <p><strong>Top Notes:</strong> <span id="modalTop">--</span></p>
+                <p><strong>Heart Notes:</strong> <span id="modalHeart">--</span></p>
+                <p><strong>Base Notes:</strong> <span id="modalBase">--</span></p>
+            </div>
+
+            <div class="ingredients-list">
+                <h4>Ingredients & Composition</h4>
+                <p id="modalIngDesc" style="margin-bottom:8px;">Pure Perfume Extract (Parfum Conc.) blended with natural essential oils.</p>
+                <ul id="modalIngredients">
+                    <li>Denatured Alcohol (SD Alcohol 39-C)</li>
+                    <li>Parfum (Fragrance Compound)</li>
+                    <li>Aqua / Purified Water</li>
+                    <li>Essential Oils Blend & Fixatives</li>
+                </ul>
+            </div>
+
+            <div class="notes-list" style="border-left-color: #22c55e;">
+                <h4>Performance Specs</h4>
+                <p><strong>Longevity:</strong> <span id="modalLongevity">12+ Hours</span></p>
+                <p><strong>Projection:</strong> <span id="modalProjection">High / Room Filling</span></p>
+                <p><strong>Concentration:</strong> Eau de Parfum (22% Fragrance Oil)</p>
+            </div>
+
+            <button class="buy-now-btn" id="modalOrderBtn" style="width: 100%; padding: 14px; font-size: 14px;">Order Now via WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCheckout()">&times;</span>
+            <h3>Checkout Order</h3>
+            <form onsubmit="sendOrder(event)">
+                <div class="form-group">
+                    <label>Selected Fragrance</label>
+                    <input type="text" id="selectedProduct" readonly style="color: #d4af37; font-weight: bold;">
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="custName" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="custPhone" placeholder="10-digit mobile number" required>
+                </div>
+                <div class="form-group">
+                    <label>Delivery Address</label>
+                    <textarea id="custAddress" rows="3" placeholder="Full address with Pincode" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select id="payMethod">
+                        <option>Cash on Delivery (COD)</option>
+                        <option>Online Payment (UPI / GPay / PhonePe)</option>
+                    </select>
+                </div>
+                <button type="submit" class="buy-now-btn" style="width: 100%; margin-top: 10px; padding: 14px; font-size: 14px;">Place Order via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 House of JASVIK | Haute Parfumerie. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let count = 0;
+
+        // Perfume Detailed Database
+        const perfumeData = {
+            'noir': {
+                name: 'JASVIK Noir Impérial',
+                price: '₹1,999 (50ml EDP)',
+                img: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=600',
+                top: 'Calabrian Bergamot, Black Pepper, Pink Peppercorn',
+                heart: 'Sichuan Pepper, Lavender, Patchouli, Vetiver',
+                base: 'Ambroxan, Cedarwood, Labdanum',
+                ingredients: [
+                    'Alcohol Denat., Parfum (Fragrance)',
+                    'Limonene, Linalool, Citronellol',
+                    'Natural Bergamot Oil & Amber Extract',
+                    'Fixative Benzyl Benzoate, Aqua'
+                ],
+                longevity: '12 - 14 Hours',
+                projection: 'Heavy (First 4 hours)'
+            },
+            'oud': {
+                name: 'JASVIK Royal Oud Intense',
+                price: '₹2,499 (50ml EDP)',
+                img: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=600',
+                top: 'Aged Assam Agarwood, Royal Saffron, Nutmeg',
+                heart: 'Mysore Sandalwood, Rose Petals, Amberwood',
+                base: 'Pure Cambodian Oud, Musk, Leather Accent',
+                ingredients: [
+                    'Denatured Alcohol, Natural Oud Resin Extract',
+                    'Saffron Essential Oil, Sandalwood Oil',
+                    'Eugenol, Geraniol, Isoeugenol',
+                    'Purified Water & UV Stabilizer'
+                ],
+                longevity: '16+ Hours (Extreme Duration)',
+                projection: 'Very Strong (Beast Mode)'
+            },
+            'ocean': {
+                name: 'JASVIK Ocean Breeze Elixir',
+                price: '₹1,499 (50ml EDP)',
+                img: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?q=80&w=600',
+                top: 'Sea Salt, Italian Amalfi Lemon, Crisp Mint',
+                heart: 'Calone, Seaweed Extract, Jasmine Flowers',
+                base: 'Driftwood, White Musk, Virginian Cedar',
+                ingredients: [
+                    'Perfumer\'s Alcohol, Citrus Citrus Essential Oils',
+                    'Sea Salt Minerals, Marine Accord',
+                    'Citral, Linalool, Geraniol, Aqua',
+                    'Fixative Tocopherol (Vitamin E)'
+                ],
+                longevity: '8 - 10 Hours',
+                projection: 'Moderate to High Fresh Radiance'
+            },
+            'velvet': {
+                name: 'JASVIK Velvet Cuir',
+                price: '₹1,799 (50ml EDP)',
+                img: 'https://images.unsplash.com/photo-1615397349754-cfa2066a298e?q=80&w=600',
+                top: 'Guatemalan Cardamom, Tuscan Leather, Thyme',
+                heart: 'Sweet Tobacco Leaf, Iris Root, Amber',
+                base: 'Suede Accord, Tonka Bean, Vanilla Absolute',
+                ingredients: [
+                    'Alcohol Denat., Suede Leather Fragrance Oil',
+                    'Tonka Bean Absolute, Tobacco Leaf Extract',
+                    'Coumarin, Alpha-Isomethyl Ionone',
+                    'Aqua & Oakmoss Extract'
+                ],
+                longevity: '10 - 12 Hours',
+                projection: 'Warm Arm\'s Length Projection'
+            },
+            'amber': {
+                name: 'JASVIK Mystic Amber',
+                price: '₹1,699 (50ml EDP)',
+                img: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?q=80&w=600',
+                top: 'Golden Amber Resin, Cinnamon Bark, Citrus',
+                heart: 'Madagascan Bourbon Vanilla, Orchid, Myrrh',
+                base: 'Smoked Cedarwood, Benzoin, Benzyl Salicylate',
+                ingredients: [
+                    'Alcohol Denat., Fragrance (Parfum)',
+                    'Natural Amber Accord, Vanilla Bean Extract',
+                    'Cinnamal, Benzyl Benzoate, Limonene',
+                    'Purified Water'
+                ],
+                longevity: '12 Hours',
+                projection: 'Rich & Enticing Sillage'
+            },
+            'citrus': {
+                name: 'JASVIK Citrus Supreme',
+                price: '₹1,399 (50ml EDP)',
+                img: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=600',
+                top: 'Pink Grapefruit, Mandarin Zest, Sparkling Grape',
+                heart: 'Vetiver Roots, Neroli Blossom, Basil',
+                base: 'Vetiver Haiti, Iso E Super, Clean Musk',
+                ingredients: [
+                    'Denatured Spirits, Natural Grapefruit Essential Oil',
+                    'Haitian Vetiver Essence, Neroli Oil',
+                    'Limonene, Citral, Aqua',
+                    'Botanical Antioxidants'
+                ],
+                longevity: '8 - 10 Hours',
+                projection: 'Fresh & High Energy'
+            }
+        };
+
+        function addToCart() {
+            count++;
+            document.getElementById('cart-count').innerText = count;
+            alert("Fragrance added to cart successfully!");
+        }
+
+        function showProductDetails(key) {
+            const p = perfumeData[key];
+            if (!p) return;
+
+            document.getElementById('modalTitle').innerText = p.name;
+            document.getElementById('modalPrice').innerText = p.price;
+            document.getElementById('modalImg').src = p.img;
+            document.getElementById('modalTop').innerText = p.top;
+            document.getElementById('modalHeart').innerText = p.heart;
+            document.getElementById('modalBase').innerText = p.base;
+            document.getElementById('modalLongevity').innerText = p.longevity;
+            document.getElementById('modalProjection').innerText = p.projection;
+
+            // Update Ingredients list
+            const ingList = document.getElementById('modalIngredients');
+            ingList.innerHTML = '';
+            p.ingredients.forEach(item => {
+                let li = document.createElement('li');
+                li.innerText = item;
+                ingList.appendChild(li);
+            });
+
+            // Set Order Button click to trigger checkout modal
+            document.getElementById('modalOrderBtn').onclick = function() {
+                closeDetails();
+                openCheckout(`${p.name} (${p.price})`);
+            };
+
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+
+        function closeDetails() {
+            document.getElementById('detailsModal').style.display = 'none';
+        }
+
+        function openCheckout(productName) {
+            document.getElementById('selectedProduct').value = productName;
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        function sendOrder(event) {
+            event.preventDefault();
+            let prod = document.getElementById('selectedProduct').value;
+            let name = document.getElementById('custName').value;
+            let phone = document.getElementById('custPhone').value;
+            let address = document.getElementById('custAddress').value;
+            let pay = document.getElementById('payMethod').value;
+
+            let msg = `Hello Jay (House of JASVIK),%0A%0AI want to order:%0A*Product:* ${prod}%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A*Payment Method:* ${pay}`;
+            
+            let myPhoneNumber = "917000808242"; 
+            
+            window.open(`https://wa.me/${myPhoneNumber}?text=${msg}`, '_blank');
+            closeCheckout();
+        }
+    </script>
+
+</body>
+</html>
